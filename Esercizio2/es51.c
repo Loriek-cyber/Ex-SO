@@ -7,12 +7,14 @@
 
 
 int main(void){
-    int fd1;
-    int fd2;
     
-    pid_t pd1;
+    //variabili per i due processi
+    pid_t p1 = fork();
+    pid_t p2;
+
     
     
 
-    
+    if (p1 > 0){
+        p2 = fork();}
 }
