@@ -8,25 +8,22 @@
 
 #define BSize 256
 
-// Funzione per stampare una stringa seguita da una nuova riga
 void println(char *str) {
     write(STDOUT_FILENO, str, strlen(str));
     write(STDOUT_FILENO, "\n", 1);
 }
 
-// Funzione per leggere una riga dal file
-// Restituisce il numero di caratteri letti nella riga
 int read_line(int fd, char *Line1) {
     ssize_t nread;
     char BUFFER;
     int index1 = 0;
 
     while ((nread = read(fd, &BUFFER, 1)) > 0) {
-        if (index1 < BSize - 1) { // Protezione contro il buffer overflow
+        if (index1 < BSize - 1) { 
             Line1[index1] = BUFFER;
             index1++;
         }
-        if (BUFFER == '\n') { // Fine della riga
+        if (BUFFER == '\n') { 
             break;
         }
     }
@@ -51,33 +48,25 @@ int open_file(const char *filename) {
     return fd;
 }
 
-// Funzione per rimuovere righe duplicate
+
 void remove_duplicate(int fd, char *Line) {
-    long int stime = lseek(fd, 0, SEEK_CUR); // Salva la posizione corrente
+    long int stime = lseek(fd, 0, SEEK_CUR); 
     long int nreaded;
     char Line1[BSize];
     
-    // Creiamo un buffer per la lettura delle righe
     while ((nreaded = read_line(fd, Line1)) > 0) {
-        // Se la riga letta è uguale a quella da rimuovere
         if (strcmp(Line, Line1) == 0) {
-            // Spostiamo il puntatore indietro per sovrascrivere la riga duplicata
             lseek(fd, -nreaded, SEEK_CUR);
-            // Scriviamo uno spazio per "rimuovere" la riga
             for (int i = 0; i < nreaded ; i++)
             {
                 write(fd, "\0", 1);
             }
-            
-             // Scriviamo un carattere nullo per rimuovere la riga
-            // Possiamo anche voler ripristinare il puntatore per continuare la lettura
         }
     }
     
-    lseek(fd, stime, SEEK_SET); // Ripristina la posizione iniziale
+    lseek(fd, stime, SEEK_SET); 
 }
 
-// Funzione per leggere e stampare fino a 100 righe
 void process_file(int fd) {
     char Line1[BSize];
     
