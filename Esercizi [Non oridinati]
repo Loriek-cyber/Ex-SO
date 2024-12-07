@@ -1,0 +1,89 @@
+Ecco 100 esercizi sulla famiglia di funzioni `exec` in C. Gli esercizi spaziano dall'utilizzo di base a casi più avanzati con combinazioni di `fork` e `exec`.
+
+---
+
+### **Esercizi di base**
+1. Scrivi un programma che utilizza `execl` per eseguire il comando `/bin/ls` senza argomenti.
+2. Utilizza `execv` per eseguire `/bin/echo` e stampa il messaggio "Hello, World!".
+3. Usa `execlp` per eseguire il comando `pwd` (senza specificare il percorso assoluto).
+4. Scrivi un programma che utilizza `execvp` per eseguire `date`.
+5. Esegui `whoami` usando `execlp` e cattura eventuali errori.
+6. Usa `execve` per eseguire `/bin/uname` con l'argomento `-a`.
+7. Implementa un programma che esegue `/bin/ls` usando `execl`, passando il flag `-l`.
+8. Usa `execl` per eseguire `ls` su una directory specifica.
+9. Utilizza `execv` per eseguire `echo` e stampa una sequenza di tre parole.
+10. Scrivi un programma che usa `execvp` per eseguire `man` e visualizzare la pagina del comando `ls`.
+
+---
+
+### **Esercizi intermedi**
+11. Usa `fork` per creare un processo figlio che esegue `/bin/ls` con `execl`.
+12. Implementa un programma che esegue `grep` su un file specificato.
+13. Scrivi un programma che usa `execve` per modificare l'ambiente e poi eseguire `env`.
+14. Crea un programma che utilizza `execlp` per eseguire un comando passato come argomento al programma.
+15. Usa `fork` e `execvp` per creare un processo figlio che esegue il comando `date`.
+16. Implementa un programma che esegue `cat` su un file specifico utilizzando `execv`.
+17. Usa `execve` per eseguire un comando con un ambiente personalizzato.
+18. Scrivi un programma che esegue `touch` per creare un nuovo file.
+19. Esegui `rm` per eliminare un file creato in precedenza.
+20. Crea un programma che esegue `cp` per copiare un file in un'altra directory.
+
+---
+
+### **Esercizi con interazione**
+21. Crea un programma che prende un comando dall'utente e lo esegue con `execvp`.
+22. Scrivi un programma che utilizza `fork` per creare un processo figlio e poi esegue `ls` con `execlp`.
+23. Implementa un programma che chiede all'utente un file e lo visualizza usando `cat`.
+24. Esegui un comando con `execlp` e verifica cosa succede se il comando non esiste.
+25. Scrivi un programma che esegue `mkdir` per creare una directory.
+26. Implementa un programma che usa `execv` per eseguire `chmod` su un file specifico.
+27. Usa `execve` per impostare una variabile d'ambiente personalizzata e poi esegui `printenv`.
+28. Scrivi un programma che crea un processo figlio con `fork`, esegue un comando con `execlp` e poi stampa un messaggio nel processo padre.
+29. Implementa un programma che esegue `ping` verso un sito specifico per 4 pacchetti.
+30. Esegui un programma con `execvp` e stampa l'errore se fallisce.
+
+---
+
+### **Esercizi con più processi**
+31. Usa `fork` per creare due processi figli che eseguono comandi diversi con `execlp`.
+32. Implementa un programma che usa `fork` per eseguire `ls` e `pwd` in due processi distinti.
+33. Scrivi un programma che crea un processo figlio per eseguire un comando e il padre aspetta che finisca.
+34. Usa `execv` per eseguire un programma che prende argomenti dalla riga di comando.
+35. Crea un programma che usa `fork` e `execlp` per eseguire due comandi consecutivi.
+36. Implementa un programma che crea un processo figlio e verifica se `execvp` fallisce.
+37. Scrivi un programma che esegue `ps` con `execlp` in un processo figlio.
+38. Usa `fork` e `execve` per eseguire un comando con un ambiente personalizzato.
+39. Crea un programma che esegue un comando, aspetta che finisca, e poi ne esegue un altro.
+40. Implementa un programma che esegue `df -h` per mostrare lo spazio disco disponibile.
+
+---
+
+### **Esercizi avanzati**
+41. Crea un programma che utilizza `pipe` per collegare due processi e `execvp` per eseguire comandi.
+42. Implementa un programma che esegue `grep` e invia l'output a `wc` usando pipe.
+43. Usa `dup2` e `execvp` per reindirizzare l'output di un comando su un file.
+44. Scrivi un programma che esegue un comando e redirige l'input da un file.
+45. Crea un programma che esegue un comando e redirige l'output verso un altro programma.
+46. Implementa un programma che utilizza `fork` per creare un processo figlio che esegue `ls` con output reindirizzato.
+47. Usa `pipe` per creare una pipeline tra `ls` e `grep`.
+48. Scrivi un programma che usa `execve` per eseguire un comando con un ambiente personalizzato e reindirizzamenti.
+49. Implementa un programma che usa due pipe per connettere tre processi.
+50. Scrivi un programma che esegue `ls -l` e redirige l'output verso un file.
+
+---
+
+### **Esercizi con errore e debug**
+51. Scrivi un programma che esegue un comando inesistente e gestisce l'errore.
+52. Implementa un programma che verifica se `execv` fallisce a causa di permessi insufficienti.
+53. Usa `execvp` per eseguire un comando con un argomento mancante e verifica cosa succede.
+54. Crea un programma che esegue un comando senza specificare il percorso corretto.
+55. Scrivi un programma che tenta di eseguire un file binario corrotto.
+56. Usa `fork` per eseguire un comando e stampa un messaggio se fallisce.
+57. Implementa un programma che esegue un comando e verifica il valore di `errno`.
+58. Crea un programma che usa `execvp` per eseguire un comando passato come argomento ma gestisce un errore di `ENOENT`.
+59. Scrivi un programma che verifica se l'ambiente influisce sull'esecuzione di un comando.
+60. Usa `execve` per eseguire un comando e stampa un messaggio se l'ambiente non è valido.
+
+---
+
+Se vuoi ulteriori esercizi o chiarimenti, fammi sapere!
