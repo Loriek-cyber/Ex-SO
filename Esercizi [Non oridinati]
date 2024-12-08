@@ -84,6 +84,4 @@ Ecco 100 esercizi sulla famiglia di funzioni `exec` in C. Gli esercizi spaziano 
 59. Scrivi un programma che verifica se l'ambiente influisce sull'esecuzione di un comando.
 60. Usa `execve` per eseguire un comando e stampa un messaggio se l'ambiente non è valido.
 
----
 
-Se vuoi ulteriori esercizi o chiarimenti, fammi sapere!
