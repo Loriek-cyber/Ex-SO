@@ -7,6 +7,6 @@
 #include <stdio.h>
 
 int main(void){
-    char *argv [] = {"echo", "Ciao", "Mondo","Come", "va?", NULL};
+    char *argv [] = {"echo", "Ciao", "Mondo","Come", "va", NULL};
     execv("/bin/echo",argv);
 }
