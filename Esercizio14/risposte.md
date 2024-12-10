@@ -105,26 +105,64 @@ allora l'output finale sarà:
 
 # Esercizio 3
 
+Si consideri il seguente sorgente C attesa.c
+
 int main(void){
     pause();
 }
 
 e si compili con il comando gcc attesa.c -o attesa
 Si consideri il seguente codice C
-<file> attesa , main.c, 
+
+
+<file> attesa , main.c
 
 <main.c>
 void handler(int);
 int main(void){
-    pid t pid;
+    pid_t pid;
     signal(SIGTERM,handler);
     pid=fork();
     if(pid==0) {
+        
         signal(SIGINT,handler);
         execl("./attesa", "attesa",NULL); }
     else 
         pause();
 }
-void handler(int signum)
-{printf("Eccomi\n"); }
-(a) Descrivere cosa accade compilando il programma ed eseguendo ./a.out nella shell.
+
+
+void handler(int signum){
+    printf("Eccomi\n"); 
+}
+
+### Descrivere cosa accade compilando il programma ed eseguendo ./a.out nella shell:
+
+Allora nella compilazione non ci sono problemi, il programma sarà eseguito senza errori, entrerrano in gioco entrambe le pause.
+
+Però il problema sta nella gestione dei segnali del figlio visto che sono stati sostituiti con quelli di <attesa>, che non ha nessun gestore, quindi vengono ripristinati a default.
+
+### (b) Supponendo che il processo padre abbia come pid 1237 ed il processo figlio abbia pid 1238,
+### descrivere cosa accade se da una seconda shell si esegue, rispettivamente:
+
+1) kill -SIGTERM 1237
+2) kill -SIGTERM 1238
+3) kill -SIGINT 1237
+4) kill -SIGINT 1238
+
+
+Allora 1237 è il pid del padre mentre 1238 è il pid del figlio
+
+1) se mandiamo un -SIGTERM al padre sarà stampato a video la parola "Eccomi" poiche il padre possiede 
+un signal handler per -SIGTERM.
+
+2) il figlio che adesso avra lo stesso codice di attesa.c non avra più un signal handler per -SIGTERM
+quindi sarà terminato senza fare niente.
+
+3) il padre non possiede un segnal handler per -SIGINT quindi terminera senza fare niente
+
+4) il figlio che prima teneva un segnal handler, non c'è l'ha più dopo la exec quindi non verà stampato niente
+
+
+
+

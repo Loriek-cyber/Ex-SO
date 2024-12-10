@@ -9,6 +9,9 @@ int main(void){
     pid_t pid;
     signal(SIGTERM,handler);
     pid=fork();
+    
+    printf("%d\n",getpid());
+
     if(pid==0) {
         signal(SIGINT,handler);
         execl("./attesa", "attesa",NULL); }
