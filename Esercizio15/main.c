@@ -56,7 +56,7 @@ int main(void){
         close(fd2[0]); //closing reading pipe;
         read(fd1[0],buffer,sizeof(buffer));
         dup2(fd2[1],STDOUT_FILENO);
-        execl("./conta","conta",buffer,NULL);
+        execl("./conta","conta","text.txt",NULL);
     }
 
     exit(0);
